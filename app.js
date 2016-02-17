@@ -159,8 +159,12 @@ function createTray() {
     var contextMenu = Menu.buildFromTemplate([
         {
             label: 'Toggle Electron Seed',
-            click: function(){
-                createWindow();
+            click: function () {
+                if (mainWindow) {
+                    (mainWindow.isVisible()) ? mainWindow.hide() : mainWindow.show();
+                } else {
+                    createWindow();
+                }
             }
         },
         {
