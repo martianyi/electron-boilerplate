@@ -20,5 +20,8 @@
     "gulp-load-plugins": "~1.2.0",
     "gulp-util": "^3.0.7",
     "require-dir": "~0.3.0"
+  },
+  "dependencies": {
+    "fs-jetpack": "~0.7.1"
   }
 }

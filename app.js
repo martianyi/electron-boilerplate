@@ -3,11 +3,13 @@
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const ipcMain = electron.ipcMain;
+const Menu = electron.Menu;
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+const windowStateKeeper = require('./utils/window-state');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+var mainWindow;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -18,25 +20,144 @@ app.on('window-all-closed', function () {
     }
 });
 
+function createWindow() {
+    // Preserver of the window size and position between app launches.
+    var mainWindowState = windowStateKeeper('main', {
+        width: 800,
+        height: 600
+    });
+
+    mainWindow = new BrowserWindow({
+        title: "Electron Seed",
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height,
+        "min-width": 800,
+        "min-height": 600
+    });
+
+    if (mainWindowState.isMaximized) {
+        mainWindow.maximize();
+    }
+
+    mainWindow.loadURL("file://" + __dirname + "/views/index.html");
+
+    // save state before close
+    mainWindow.on('close', function () {
+        mainWindowState.saveState(mainWindow);
+    });
+
+    // defer mainWindow
+    mainWindow.on("closed", function () {
+        mainWindow = null;
+    });
+
+    // open url in default browser
+    mainWindow.webContents.on("will-navigate", function (event, url) {
+        if (!url.startsWith("file://")) {
+            event.preventDefault();
+            require("shell").openExternal(url);
+        }
+    });
+
+    var template = [
+        {
+            label: 'Seed',
+            submenu: [
+                {
+                    label: 'Services',
+                    submenu: []
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Hide',
+                    accelerator: 'Command+H',
+                    selector: 'hide:'
+                },
+                {
+                    label: 'Hide Others',
+                    accelerator: 'Command+Shift+H',
+                    selector: 'hideOtherApplications:'
+                },
+                {
+                    label: 'Show All',
+                    selector: 'unhideAllApplications:'
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Quit',
+                    accelerator: 'Command+Q',
+                    click: function () {
+                        app.quit();
+                    }
+                }
+            ]
+        },
+        {
+            label: 'View',
+            submenu: [
+                {
+                    label: 'Reload',
+                    accelerator: 'Command+R',
+                    click: function () {
+                        BrowserWindow.getFocusedWindow().reloadIgnoringCache();
+                    }
+                },
+                {
+                    label: 'Toggle DevTools',
+                    accelerator: 'Alt+Command+I',
+                    click: function () {
+                        BrowserWindow.getFocusedWindow().toggleDevTools();
+                    }
+                }
+            ]
+        },
+        {
+            label: 'Window',
+            submenu: [
+                {
+                    label: 'Minimize',
+                    accelerator: 'Command+M',
+                    selector: 'performMiniaturize:'
+                },
+                {
+                    label: 'Close',
+                    accelerator: 'Command+W',
+                    selector: 'performClose:'
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Bring All to Front',
+                    selector: 'arrangeInFront:'
+                }
+            ]
+        },
+        {
+            label: 'Help',
+            submenu: []
+        }
+    ];
+    var menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
     // Create the browser window.
-    mainWindow = new BrowserWindow({width: 800, height: 600});
-
-    // and load the index.html of the app.
-    mainWindow.loadURL('file://' + __dirname + '/views/index.html');
-
-    // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
-
-    // Emitted when the window is closed.
-    mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        mainWindow = null;
-    });
+    createWindow();
 
 });
+
+app.on("activate-with-no-open-windows", function () {
+    createWindow();
+});
+
 
