@@ -1,7 +1,7 @@
 {
-  "name": "electron-test",
-  "version": "1.0.0",
-  "description": "",
+  "name": "electron-seed",
+  "version": "0.1.0",
+  "description": "Using electron to build an realtimecat app",
   "main": "app.js",
   "scripts": {
     "start": "gulp electron-start",
