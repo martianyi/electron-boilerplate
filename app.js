@@ -4,12 +4,16 @@ const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const ipcMain = electron.ipcMain;
 const Menu = electron.Menu;
+const Tray = electron.Tray;
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 const windowStateKeeper = require('./utils/window-state');
+const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow;
+var appIcon;
+var iconPath = path.join(__dirname, 'images/icon.png');
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -20,6 +24,7 @@ app.on('window-all-closed', function () {
     }
 });
 
+// Create window
 function createWindow() {
     // Preserver of the window size and position between app launches.
     var mainWindowState = windowStateKeeper('main', {
@@ -148,12 +153,45 @@ function createWindow() {
     Menu.setApplicationMenu(menu);
 }
 
+// Create tray
+function createTray() {
+    appIcon = new Tray(iconPath);
+    var contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Toggle Electron Seed',
+            click: function(){
+                createWindow();
+            }
+        },
+        {
+            type: 'separator'
+        },
+        {
+            label: 'Toggle DevTools',
+            accelerator: 'Alt+Command+I',
+            click: function () {
+                mainWindow.toggleDevTools();
+            }
+        },
+        {
+            type: 'separator'
+        },
+        {
+            label: 'Quit',
+            accelerator: 'Command+Q',
+            selector: 'terminate:'
+        }
+    ]);
+    appIcon.setToolTip('This is my application.');
+    appIcon.setContextMenu(contextMenu);
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
     // Create the browser window.
     createWindow();
-
+    createTray();
 });
 
 app.on("activate-with-no-open-windows", function () {
