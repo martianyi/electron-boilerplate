@@ -18,5 +18,5 @@ gulp.task('electron-start', function () {
     gulp.watch('app.js', electron.restart);
 
     // Reload renderer process
-    gulp.watch(['index.js', 'index.html'], electron.reload);
+    gulp.watch([path.join(conf.paths.controllers, '**/*.js'), path.join(conf.paths.views, '**/*.html')], electron.reload);
 });

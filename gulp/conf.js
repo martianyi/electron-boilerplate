@@ -13,7 +13,10 @@ var gutil = require('gulp-util');
 /**
  *  The main paths of your project handle these with care
  */
-exports.paths = {};
+exports.paths = {
+    views: './views',
+    controllers: './controllers'
+};
 
 /**
  *  Common implementation for an error handler of a Gulp plugin
