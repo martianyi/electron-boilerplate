@@ -21,7 +21,11 @@ npm start
 
 ## 构建应用
 
-运行`npm run build`命令, 打包好的应用位于dist文件夹下
+### OSX
+构建Mac应用请在OSX系统下进行,运行`npm run build:osx`命令,将在`dist/osx/`下生成`.app`应用和`dmg`安装包.
+
+### Windows
+构建Windows应用请在Windows系统下进行,运行`npm run build:win`命令,将在`dist/win/`下生成
 
 **Windows 构建警告** 需要一字不差地按照[本页](http://electron.atom.io/docs/v0.36.7/development/build-instructions-windows/)的说明进行构建。
 

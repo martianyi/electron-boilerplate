@@ -12,7 +12,7 @@
     "clean:win": "rm -rf ./dist/win",
 
     "pack": "npm run clean && npm run pack:osx && npm run pack:win",
-    "pack:osx": "npm run clean:osx && electron-packager ./app \"ElectronSeed\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.7 --icon=assets/osx/realtimecat.icns",
+    "pack:osx": "npm run clean:osx && electron-packager ./app \"ElectronSeed\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.7 --icon=assets/osx/icon.icns",
     "pack:win": "npm run clean:win && electron-packager ./app \"ElectronSeed\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.7 --icon=assets/win/icon.ico",
 
     "build": "npm run build:osx && npm run build:win",
