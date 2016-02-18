@@ -7,14 +7,12 @@
     "postinstall": "cd app && npm install",
     "start": "gulp electron-start",
     "rebuild": "electron-rebuild",
-    "clean": "rm -rf ./dist",
-    "clean:osx": "rm -rf ./dist/osx",
-    "clean:win": "rm -rf ./dist/win",
-
+    "clean": "gulp clean",
+    "clean:osx": "gulp clean:osx",
+    "clean:win": "gulp clean:win",
     "pack": "npm run clean && npm run pack:osx && npm run pack:win",
     "pack:osx": "npm run clean:osx && electron-packager ./app \"ElectronSeed\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.7 --icon=assets/osx/icon.icns",
     "pack:win": "npm run clean:win && electron-packager ./app \"ElectronSeed\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.7 --icon=assets/win/icon.ico",
-
     "build": "npm run build:osx && npm run build:win",
     "build:osx": "npm run pack:osx && electron-builder \"dist/osx/ElectronSeed-darwin-x64/ElectronSeed.app\" --platform=osx --out=\"dist/osx\" --config=config.json",
     "build:win": "npm run pack:win && electron-builder \"dist/win/ElectronSeed-win32\" --platform=win --out=\"dist/win\" --config=config.json"
@@ -22,6 +20,7 @@
   "author": "Yi Kai",
   "license": "ISC",
   "devDependencies": {
+    "del": "^2.2.0",
     "electron-builder": "^2.7.2",
     "electron-connect": "~0.3.7",
     "electron-packager": "^5.2.1",

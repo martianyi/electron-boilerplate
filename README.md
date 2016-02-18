@@ -22,12 +22,23 @@ npm start
 ## 构建应用
 
 ### OSX
+
 构建Mac应用请在OSX系统下进行,运行`npm run build:osx`命令,将在`dist/osx/`下生成`.app`应用和`dmg`安装包.
 
 ### Windows
-构建Windows应用请在Windows系统下进行,运行`npm run build:win`命令,将在`dist/win/`下生成
 
-**Windows 构建警告** 需要一字不差地按照[本页](http://electron.atom.io/docs/v0.36.7/development/build-instructions-windows/)的说明进行构建。
+构建Windows应用请在Windows系统下进行。
+
+开始前安装
+
+1.按照[本页](http://electron.atom.io/docs/v0.36.7/development/build-instructions-windows/)的Prerequisites要求安装依赖。
+
+2.安装[NSIS 3.0](http://nsis.sourceforge.net/Download)，并将NSIS路径放入环境变量。命令如下：
+`set PATH=%PATH%;C:\Program Files (x86)\NSIS`
+
+之后运行`npm run build:win`命令,将在`dist/win/`下生成
+
+
 
 ## 已知问题 
 
