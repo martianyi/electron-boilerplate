@@ -4,14 +4,25 @@
   "description": "Using electron to build an realtimecat app",
   "main": "app.js",
   "scripts": {
+    "postinstall": "cd app && npm install",
     "start": "gulp electron-start",
-    "build": "electron-packager . ElectronTest --out=dist --platform=darwin --arch=x64 --version=0.36.7 --asar --overwrite --ignore=node_modules/electron-* --ignore=node_modules/gulp-*",
     "rebuild": "electron-rebuild",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf ./dist",
+    "clean:osx": "rm -rf ./dist/osx",
+    "clean:win": "rm -rf ./dist/win",
+
+    "pack": "npm run clean && npm run pack:osx && npm run pack:win",
+    "pack:osx": "npm run clean:osx && electron-packager ./app \"Electron Seed\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.7 --icon=assets/osx/loopline.icns",
+    "pack:win": "npm run clean:win && electron-packager ./app \"Electron Seed\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.7 --icon=assets/win/icon.ico",
+
+    "build": "npm run build:osx && npm run build:win",
+    "build:osx": "npm run pack:osx && electron-builder \"dist/osx/Loopline Systems.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
+    "build:win": "npm run pack:win && electron-builder \"dist/win/Loopline Systems-win32\" --platform=win --out=\"dist/win\" --config=builder.json"
   },
   "author": "Yi Kai",
   "license": "ISC",
   "devDependencies": {
+    "electron-builder": "^2.7.2",
     "electron-connect": "~0.3.7",
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.7",
@@ -20,8 +31,5 @@
     "gulp-load-plugins": "~1.2.0",
     "gulp-util": "^3.0.7",
     "require-dir": "~0.3.0"
-  },
-  "dependencies": {
-    "fs-jetpack": "~0.7.1"
   }
 }
