@@ -7,7 +7,8 @@ var conf = require('./conf');
 //Loading all gulp plugins
 var $ = require('gulp-load-plugins')();
 
-var electron = require('electron-connect').server.create();
+//Livereload tool for Electron https://www.npmjs.com/package/electron-connect
+var electron = require('electron-connect').server.create({path: './app/', verbose: true});
 
 gulp.task('electron-start', function () {
 
@@ -15,7 +16,7 @@ gulp.task('electron-start', function () {
     electron.start();
 
     // Restart browser process
-    gulp.watch('app.js', electron.restart);
+    gulp.watch('./app/app.js', electron.restart);
 
     // Reload renderer process
     gulp.watch([path.join(conf.paths.controllers, '**/*.js'), path.join(conf.paths.views, '**/*.html')], electron.reload);

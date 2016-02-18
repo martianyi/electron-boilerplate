@@ -1,8 +1,23 @@
 # Electron Seed
 
-## 调试
+## 快速开始
 
 clone本项目至本地,cd到项目目录,运行`npm install`安装依赖, 运行`npm start`查看
+
+```bash
+git clone git@git.learning-tech.cn:realtimecat/electron-seed.git
+cd electron-seed
+npm install
+npm start
+```
+
+## 项目结构
+
+本项目有两个`package.json`文件
+
+`electron-seed/package.json`文件中声明devDependencies, 这些依赖不随应用发布.
+`electron-seed/app/package.json`中声明dependencies, 打包应用时随应用发布.
+
 
 ## 构建应用
 

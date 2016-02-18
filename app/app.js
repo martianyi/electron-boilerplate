@@ -13,7 +13,7 @@ const path = require('path');
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow;
 var appIcon;
-var iconPath = path.join(__dirname, 'images/icon.png');
+var iconPath = path.join(__dirname, 'static/images/icon.png');
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -186,7 +186,7 @@ function createTray() {
             selector: 'terminate:'
         }
     ]);
-    appIcon.setToolTip('This is my application.');
+    appIcon.setToolTip('Electron Seed');
     appIcon.setContextMenu(contextMenu);
 }
 
