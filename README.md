@@ -36,7 +36,7 @@ npm start
 2.安装[NSIS 3.0](http://nsis.sourceforge.net/Download)，并将NSIS路径放入环境变量。命令如下：
 `set PATH=%PATH%;C:\Program Files (x86)\NSIS`
 
-之后运行`npm run build:win`命令,将在`dist/win/`下生成
+之后运行`npm run build:win`命令,将在`dist/win/`下生成软件包以及安装包。
 
 
 

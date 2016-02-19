@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "cd app && npm install",
     "start": "gulp electron-start",
-    "rebuild": "electron-rebuild",
+    "rebuild": "node ./gulp/rebuild-native-modules",
     "clean": "gulp clean",
     "clean:osx": "gulp clean:osx",
     "clean:win": "gulp clean:win",
@@ -15,7 +15,7 @@
     "pack:win": "npm run clean:win && electron-packager ./app \"ElectronSeed\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.7 --icon=assets/win/icon.ico",
     "build": "npm run build:osx && npm run build:win",
     "build:osx": "npm run pack:osx && electron-builder \"dist/osx/ElectronSeed-darwin-x64/ElectronSeed.app\" --platform=osx --out=\"dist/osx\" --config=config.json",
-    "build:win": "npm run pack:win && electron-builder \"dist/win/ElectronSeed-win32\" --platform=win --out=\"dist/win\" --config=config.json"
+    "build:win": "npm run pack:win && electron-builder \"dist/win/ElectronSeed-win32-ia32\" --platform=win --out=\"dist/win\" --config=config.json"
   },
   "author": "Yi Kai",
   "license": "ISC",
@@ -29,6 +29,7 @@
     "gulp": "^3.9.0",
     "gulp-load-plugins": "~1.2.0",
     "gulp-util": "^3.0.7",
+    "q": "^1.4.1",
     "require-dir": "~0.3.0"
   }
 }
