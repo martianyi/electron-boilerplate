@@ -47,10 +47,10 @@ npm start
  export NPM_CONFIG_ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
  cd node_modules/electron-prebuilt && node install.js
  ```
-详见[](https://github.com/electron-userland/electron-prebuilt/issues/76), [](https://github.com/electron-userland/electron-prebuilt/issues/66)
+详见[issue #76](https://github.com/electron-userland/electron-prebuilt/issues/76), [issue #66](https://github.com/electron-userland/electron-prebuilt/issues/66)
 
 
 ## 已知问题 
 
 1. electron无法使用chrome扩展且尚无支持计划,若需使用屏幕分享功能需要另行开发
-详见[](https://github.com/atom/electron/issues/1498)
+详见[issue #1498](https://github.com/atom/electron/issues/1498)
