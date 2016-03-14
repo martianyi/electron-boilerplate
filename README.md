@@ -38,9 +38,19 @@ npm start
 
 之后运行`npm run build:win`命令,将在`dist/win/`下生成软件包以及安装包。
 
+## 常见问题
+
+1. 因为electron被墙无法安装, 导致`No path.txt in electron-prebuilt folder`问题
+
+解决方法:
+ ```
+ export NPM_CONFIG_ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+ cd node_modules/electron-prebuilt && node install.js
+ ```
+详见[](https://github.com/electron-userland/electron-prebuilt/issues/76), [](https://github.com/electron-userland/electron-prebuilt/issues/66)
 
 
 ## 已知问题 
 
 1. electron无法使用chrome扩展且尚无支持计划,若需使用屏幕分享功能需要另行开发
-Github issue地址:https://github.com/atom/electron/issues/1498
+详见[](https://github.com/atom/electron/issues/1498)

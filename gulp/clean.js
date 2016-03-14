@@ -11,4 +11,4 @@ gulp.task('clean:win', function () {
 
 gulp.task('clean', function(){
 	return del('./dist/**/*')
-})
+});

@@ -15,6 +15,9 @@ var mainWindow;
 var appIcon;
 var iconPath = path.join(__dirname, 'static/images/icon.png');
 
+// Ignore certificate errors
+app.commandLine.appendSwitch ('ignore-certificate-errors', 'true');
+
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
     // On OS X it is common for applications and their menu bar
