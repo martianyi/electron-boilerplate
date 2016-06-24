@@ -46,8 +46,8 @@
     },
     "win": {
       "title": "Electron Seed",
-      "version": "x.x.x.x",
-      "iconUrl": "assets/win/icon.ico"
+      "target": "nsis",
+      "icon": "assets/win/icon.ico"
     }
   }
 }

@@ -7,5 +7,5 @@ gulp.task('clean:mac', function () {
 });
 
 gulp.task('clean:win', function () {
-  return del(conf.paths.win32);
+  return del(conf.paths.win);
 });
