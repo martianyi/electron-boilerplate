@@ -13,13 +13,17 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+
+        webview {
+            width: 100%;
+            height: 100vh;
         }
     </style>
-    <!--remove this script tag before building-->
-    <script>require('electron-connect').client.create()</script>
 </head>
 <body>
-<webview id="rtc-rooms" src="https://localhost/rooms/" autosize="on" style="min-width:800px; min-height:600px;" disablewebsecurity></webview>
+<webview id="rtc-rooms" src="https://localhost/rooms/" autosize="on"></webview>
 
 </body>
 </html>

@@ -14,8 +14,8 @@ var gutil = require('gulp-util');
  *  The main paths of your project handle these with care
  */
 exports.paths = {
-    views: './app/views',
-    controllers: './app/controllers'
+    win32:"./dist/win/**/*",
+    mac:"./dist/mac/**/*"
 };
 
 /**

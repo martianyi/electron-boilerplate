@@ -1,14 +1,11 @@
 var gulp = require('gulp');
 var del = require('del');
+var conf = require('./conf');
 
-gulp.task('clean:osx', function () {
-  return del("./dist/osx/**/*");
+gulp.task('clean:mac', function () {
+  return del(conf.paths.mac);
 });
 
 gulp.task('clean:win', function () {
-  return del("./dist/win/**/*");
-});
-
-gulp.task('clean', function(){
-	return del('./dist/**/*')
+  return del(conf.paths.win32);
 });

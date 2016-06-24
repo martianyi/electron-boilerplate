@@ -21,9 +21,9 @@ npm start
 
 ## 构建应用
 
-### OSX
+### MAC
 
-构建Mac应用请在OSX系统下进行,运行`npm run build:osx`命令,将在`dist/osx/`下生成`.app`应用和`dmg`安装包.
+构建Mac应用请在macOS/OSX系统下进行,运行`npm run build:mac`命令,将在`dist/mac/`下生成`.app`应用和`dmg`安装包.
 
 ### Windows
 
@@ -40,12 +40,12 @@ npm start
 
 ## 常见问题
 
-1. 因为electron被墙无法安装, 导致`No path.txt in electron-prebuilt folder`问题
+1. 因为electron被墙无法安装, 导致`No path.txt in electron-prebuilt folder`或其他问题
 
 解决方法:
  ```
  export NPM_CONFIG_ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
- cd node_modules/electron-prebuilt && node install.js
+ npm install electron-prebuilt --save-dev
  ```
 详见[issue #76](https://github.com/electron-userland/electron-prebuilt/issues/76), [issue #66](https://github.com/electron-userland/electron-prebuilt/issues/66)
 
