@@ -31,7 +31,7 @@ npm start
 
 开始前安装
 
-1.按照[本页](http://electron.atom.io/docs/v0.36.7/development/build-instructions-windows/)的Prerequisites要求安装依赖。
+1.按照[本页](http://electron.atom.io/docs/development/build-instructions-windows/)的Prerequisites要求安装依赖。
 
 2.安装[NSIS 3.0](http://nsis.sourceforge.net/Download)，并将NSIS路径放入环境变量。命令如下：
 `set PATH=%PATH%;C:\Program Files (x86)\NSIS`
