@@ -40,17 +40,15 @@ npm start
 
 ## 常见问题
 
-1. 因为electron被墙无法安装, 导致`No path.txt in electron-prebuilt folder`或其他问题
+1. 因为electron被墙无法安装问题
 
 解决方法:
  ```
  export NPM_CONFIG_ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
- npm install electron-prebuilt --save-dev
+ npm install electron --save-dev
  ```
 详见[issue #76](https://github.com/electron-userland/electron-prebuilt/issues/76), [issue #66](https://github.com/electron-userland/electron-prebuilt/issues/66)
 
-
 ## 已知问题 
 
-1. electron无法使用chrome扩展且尚无支持计划,若需使用屏幕分享功能需要另行开发
-详见[issue #1498](https://github.com/atom/electron/issues/1498)
+1. electron无法使用chrome扩展且尚无支持计划,若需使用屏幕分享功能需要另行开发。详见[issue #1498](https://github.com/atom/electron/issues/1498)
