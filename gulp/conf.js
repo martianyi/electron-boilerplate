@@ -14,7 +14,7 @@ var gutil = require('gulp-util');
  *  The main paths of your project handle these with care
  */
 exports.paths = {
-    win:["./dist/win-ia32-unpacked/**/*", './dist/app.7z', './dist/*.exe'],
+    win:["./dist/win-ia32-unpacked/**/*", './dist/*.exe'],
     mac:"./dist/mac/**/*"
 };
 
