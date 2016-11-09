@@ -23,7 +23,15 @@
     </style>
 </head>
 <body>
-<webview id="rtc-rooms" src="https://localhost/rooms/" autosize="on"></webview>
-
+<webview id="rtc-rooms" src="http://localhost" autosize="on"></webview>
+<script>
+    var webview = document.getElementById('rtc-rooms');
+    webview.addEventListener("dom-ready", function () {
+        var useragent = navigator.userAgent;
+        useragent += ' electron';
+        console.log(useragent);
+        webview.setUserAgent(useragent);
+    });
+</script>
 </body>
 </html>

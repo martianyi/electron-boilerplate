@@ -15,8 +15,8 @@ var mainWindow;
 var appIcon;
 var iconPath = path.join(__dirname, 'static/images/icon.png');
 
-// Ignore certificate errors
-app.commandLine.appendSwitch ('ignore-certificate-errors', 'true');
+app.commandLine.appendSwitch('ignore-certificate-errors', 'true'); // Ignore certificate errors
+app.commandLine.appendSwitch('enable-usermedia-screen-capturing', 'true'); //capture screen without extension
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
